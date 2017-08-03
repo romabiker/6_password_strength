@@ -51,11 +51,7 @@ def isspecial_in_password(password):
         return True
 
 
-def get_password_strength(password):
-    if not password:
-        return None
-    if password_is_weak(password):
-        return 1
+def calculate_password_strength(password):
     pswd_strn = 4
     if len(password) > 10:
         pswd_strn += 1
@@ -70,6 +66,14 @@ def get_password_strength(password):
     if isspecial_in_password(password):
         pswd_strn += 1
     return pswd_strn
+
+
+def get_password_strength(password):
+    if not password:
+        return None
+    if password_is_weak(password):
+        return 1
+    return calculate_password_strength(password)
 
 
 if __name__ == '__main__':
