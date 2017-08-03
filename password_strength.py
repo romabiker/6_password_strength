@@ -2,27 +2,29 @@ import sys
 import string
 
 
+TOP_10_COMMON_PASSWORDS = (
+                            'Password1',
+                            'Welcome1',
+                            'P@ssword',
+                            'Summer1!',
+                            'password',
+                            'Fa$hion1',
+                            'Hello123',
+                            'Welcome123',
+                            'P@ssword1',
+                           )
+
+
 def get_password_strength(password):
     if not password:
         return None
-    top_10_common_passwords = (
-                                'Password1',
-                                'Welcome1',
-                                'P@ssword',
-                                'Summer1!',
-                                'password',
-                                'Fa$hion1',
-                                'Hello123',
-                                'Welcome123',
-                                'P@ssword1',
-                               )
     pswd_strn = 4
     if any((
               password.isalnum(),
               password.isalpha(),
               password.isspace(),
               len(password) < 6,
-              password in top_10_common_passwords,
+              password in TOP_10_COMMON_PASSWORDS,
               )):
         return 1
     if len(password) > 10:
