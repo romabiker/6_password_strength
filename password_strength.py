@@ -28,43 +28,55 @@ def password_is_weak(password):
 
 def isdigit_in_password(password):
     if any((char.isdigit() for char in password)):
-        return True
+        return 1
+    else:
+        return 0
 
 
 def isalpha_in_password(password):
     if any((char.isalpha() for char in password)):
-        return True
+        return 1
+    else:
+        return 0
 
 
 def isupper_in_password(password):
     if any((char.isupper() for char in password)):
-        return True
+        return 1
+    else:
+        return 0
 
 
 def islower_in_password(password):
     if any((char.islower() for char in password)):
-        return True
+        return 1
+    else:
+        return 0
 
 
 def isspecial_in_password(password):
     if any((char in string.punctuation for char in password)):
-        return True
+        return 1
+    else:
+        return 0
+
+
+def islong_password(password):
+    if len(password) > 10:
+        return 1
+    else:
+        return 0
 
 
 def calculate_password_strength(password):
-    pswd_strn = 4
-    if len(password) > 10:
-        pswd_strn += 1
-    if isdigit_in_password(password):
-        pswd_strn += 1
-    if isalpha_in_password(password):
-        pswd_strn += 1
-    if isupper_in_password(password):
-        pswd_strn += 1
-    if islower_in_password(password):
-        pswd_strn += 1
-    if isspecial_in_password(password):
-        pswd_strn += 1
+    pswd_strn = 4 + sum((
+                        isdigit_in_password(password),
+                        isalpha_in_password(password),
+                        isupper_in_password(password),
+                        islower_in_password(password),
+                        isspecial_in_password(password),
+                        islong_password(password),
+                        ))
     return pswd_strn
 
 
