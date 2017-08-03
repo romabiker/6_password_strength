@@ -15,10 +15,7 @@ TOP_10_COMMON_PASSWORDS = (
                            )
 
 
-def get_password_strength(password):
-    if not password:
-        return None
-    pswd_strn = 4
+def password_is_weak(password):
     if any((
               password.isalnum(),
               password.isalpha(),
@@ -26,7 +23,15 @@ def get_password_strength(password):
               len(password) < 6,
               password in TOP_10_COMMON_PASSWORDS,
               )):
+        return True
+
+
+def get_password_strength(password):
+    if not password:
+        return None
+    if password_is_weak(password):
         return 1
+    pswd_strn = 4
     if len(password) > 10:
         pswd_strn += 1
     if any((char.isdigit() for char in password)):
