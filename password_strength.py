@@ -1,3 +1,4 @@
+import getpass
 import sys
 import string
 
@@ -27,44 +28,44 @@ def password_is_weak(password):
 
 def isdigit_in_password(password):
     if any((char.isdigit() for char in password)):
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 
 def isalpha_in_password(password):
     if any((char.isalpha() for char in password)):
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 
 def isupper_in_password(password):
     if any((char.isupper() for char in password)):
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 
 def islower_in_password(password):
     if any((char.islower() for char in password)):
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 
 def isspecial_in_password(password):
     if any((char in string.punctuation for char in password)):
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 
 def islong_password(password):
     if len(password) > 10:
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 
 def calculate_password_strength(password):
@@ -85,9 +86,7 @@ def get_password_strength(password):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        password = sys.argv[1]
-        password_strength = get_password_strength(password)
-        print('password_strength is {}'.format(password_strength))
-    else:
-        print('\nEnter: python3 password_strength.py "here is a password"\n')
+    print('Enter password to check its strength:')
+    password = getpass.getpass()
+    password_strength = get_password_strength(password)
+    print('password_strength is {}'.format(password_strength))
