@@ -16,14 +16,13 @@ TOP_10_COMMON_PASSWORDS = (
 
 
 def password_is_weak(password):
-    if any((
+    return any((
               password.isalnum(),
               password.isalpha(),
               password.isspace(),
               len(password) < 6,
               password in TOP_10_COMMON_PASSWORDS,
-              )):
-        return True
+              ))
 
 
 def isdigit_in_password(password):
@@ -69,20 +68,17 @@ def islong_password(password):
 
 
 def calculate_password_strength(password):
-    pswd_strn = 4 + sum((
-                        isdigit_in_password(password),
-                        isalpha_in_password(password),
-                        isupper_in_password(password),
-                        islower_in_password(password),
-                        isspecial_in_password(password),
-                        islong_password(password),
-                        ))
-    return pswd_strn
+    return 4 + sum((
+                    isdigit_in_password(password),
+                    isalpha_in_password(password),
+                    isupper_in_password(password),
+                    islower_in_password(password),
+                    isspecial_in_password(password),
+                    islong_password(password),
+                    ))
 
 
 def get_password_strength(password):
-    if not password:
-        return None
     if password_is_weak(password):
         return 1
     return calculate_password_strength(password)
