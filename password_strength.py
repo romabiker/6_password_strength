@@ -27,45 +27,27 @@ def password_is_weak(password):
 
 
 def isdigit_in_password(password):
-    if any((char.isdigit() for char in password)):
-        return True
-    else:
-        return False
+    return any((char.isdigit() for char in password))
 
 
 def isalpha_in_password(password):
-    if any((char.isalpha() for char in password)):
-        return True
-    else:
-        return False
+    return any((char.isalpha() for char in password))
 
 
 def isupper_in_password(password):
-    if any((char.isupper() for char in password)):
-        return True
-    else:
-        return False
+    return any((char.isupper() for char in password))
 
 
 def islower_in_password(password):
-    if any((char.islower() for char in password)):
-        return True
-    else:
-        return False
+    return any((char.islower() for char in password))
 
 
 def isspecial_in_password(password):
-    if any((char in string.punctuation for char in password)):
-        return True
-    else:
-        return False
+    return any((char in string.punctuation for char in password))
 
 
 def islong_password(password):
-    if len(password) > 10:
-        return True
-    else:
-        return False
+    return len(password) > 10
 
 
 def calculate_password_strength(password):
