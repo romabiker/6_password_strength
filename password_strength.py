@@ -3,7 +3,7 @@ import sys
 import string
 
 
-TOP_10_COMMON_PASSWORDS = (
+TOP_10_COMMON_PASSWORDS = {
                             'Password1',
                             'Welcome1',
                             'P@ssword',
@@ -13,7 +13,7 @@ TOP_10_COMMON_PASSWORDS = (
                             'Hello123',
                             'Welcome123',
                             'P@ssword1',
-                           )
+                           }
 
 
 def password_is_weak(password):
@@ -27,23 +27,23 @@ def password_is_weak(password):
 
 
 def isdigit_in_password(password):
-    return any((char.isdigit() for char in password))
+    return any(char.isdigit() for char in password)
 
 
 def isalpha_in_password(password):
-    return any((char.isalpha() for char in password))
+    return any(char.isalpha() for char in password)
 
 
 def isupper_in_password(password):
-    return any((char.isupper() for char in password))
+    return any(char.isupper() for char in password)
 
 
 def islower_in_password(password):
-    return any((char.islower() for char in password))
+    return any(char.islower() for char in password)
 
 
 def isspecial_in_password(password):
-    return any((char in string.punctuation for char in password))
+    return any(char in string.punctuation for char in password)
 
 
 def islong_password(password):
